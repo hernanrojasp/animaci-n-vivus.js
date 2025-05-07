@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Animación con Vivus.js</title>
+ 
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    #my-svg {
+      width: 400px;
+      height: 350px;
+      margin: auto;
+      display: block;
+    }
+  </style>
+</head>
+<body class="bg-light text-center py-5">
+
+  <div class="container">
+    <h1 class="mb-4">Taller Animacion con Vivus.JS</h1>
+
+    <div id="my-svg">
+   
+      <svg id="svg-animado" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="40" stroke="blue" stroke-width="2" fill="none"/>
+        <line x1="30" y1="50" x2="70" y2="50" stroke="red" stroke-width="2"/>
+      </svg>
+    </div>
+
+    <button class="btn btn-primary mt-4" onclick="animar()">Reproducir</button>
+  </div>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/vivus@0.4.6/dist/vivus.min.js"></script>
+
+  <script>
+    let animacion;
+
+    function animar() {
+      if (animacion) animacion.stop().reset(); 
+      animacion = new Vivus('svg-animado', {
+        type: 'delayed',
+        duration: 200,
+        animTimingFunction: Vivus.EASE
+      });
+    }
+    
+    window.onload = animar;
+  </script>
+
+</body>
+</html>
